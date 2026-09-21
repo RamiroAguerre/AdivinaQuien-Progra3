@@ -1,0 +1,6 @@
+Entorno de verificación: OpenJDK 17.0.20, Linux.
+
+Búsquedas individuales: mínimo 4, máximo 5 preguntas; total 106 para 23 secretos.
+OK: 3068 comprobaciones.
+23 secretos identificados y 529 pares de secretos jugados sin errores.
+Humano: victoria, error, pregunta, abandono y entradas inválidas verificados.

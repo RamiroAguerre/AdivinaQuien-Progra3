@@ -1,0 +1,179 @@
+ADIVINA QUIÉN - Versión preliminar en consola
+Catálogo validado: 23 personajes con características únicas.
+Calvicie = parcial; se conserva el color del pelo de los costados.
+Carga original agrupada por género: [1 - Pedro, 2 - Juan, 3 - Carlos, 4 - Diego, 5 - Esteban, 6 - Federico, 7 - Gabriel, 8 - Hugo, 9 - Ivan, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 13 - Ana, 14 - Beatriz, 15 - Carla, 16 - Diana, 17 - Elena, 18 - Florencia, 19 - Gabriela, 20 - Helena, 21 - Ines, 22 - Julia, 23 - Laura]
+Ordenamiento inicial: MergeSort por nombre, con ID como desempate.
+Resultado: [13 - Ana, 14 - Beatriz, 15 - Carla, 3 - Carlos, 16 - Diana, 4 - Diego, 17 - Elena, 5 - Esteban, 6 - Federico, 18 - Florencia, 7 - Gabriel, 19 - Gabriela, 20 - Helena, 8 - Hugo, 21 - Ines, 9 - Ivan, 2 - Juan, 22 - Julia, 23 - Laura, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 1 - Pedro]
+Los IDs asignados al cargar no cambian al ordenar.
+
+1. Humano vs. Máquina
+2. Máquina vs. Máquina
+3. Ver personajes
+0. Salir
+Opción: 
+Cada participante comienza con 23 candidatos y busca el secreto del rival.
+Un turno permite preguntar O arriesgar un personaje.
+Una suposición incorrecta consume el turno y descarta ese personaje.
+Los secretos se eligen independientemente y pueden coincidir.
+Las respuestas las calcula el juego automáticamente.
+Prototipo: ambas máquinas utilizan Greedy, sin compartir información.
+Candidatos restantes: Máquina 1 = 23 | Máquina 2 = 23
+
+--- TURNO 1: Máquina 1 ---
+Candidatos antes: 23
+Lista actual: [13 - Ana, 14 - Beatriz, 15 - Carla, 3 - Carlos, 16 - Diana, 4 - Diego, 17 - Elena, 5 - Esteban, 6 - Federico, 18 - Florencia, 7 - Gabriel, 19 - Gabriela, 20 - Helena, 8 - Hugo, 21 - Ines, 9 - Ivan, 2 - Juan, 22 - Julia, 23 - Laura, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 1 - Pedro]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Es hombre?                    Sí: 12 | No: 11 | Mayor grupo: 12 | Útil
+  ¿Tiene calvicie parcial?       Sí: 11 | No: 12 | Mayor grupo: 12 | Útil
+  ¿Usa lentes?                   Sí: 11 | No: 12 | Mayor grupo: 12 | Útil
+  ¿Tiene pelo negro?             Sí:  8 | No: 15 | Mayor grupo: 15 | Útil
+  ¿Tiene pelo colorado?          Sí:  8 | No: 15 | Mayor grupo: 15 | Útil
+  ¿Tiene pelo rubio?             Sí:  7 | No: 16 | Mayor grupo: 16 | Útil
+Greedy elige: ¿Es hombre?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Es hombre?
+Respuesta del rival: No
+Descartados (12): [3 - Carlos, 4 - Diego, 5 - Esteban, 6 - Federico, 7 - Gabriel, 8 - Hugo, 9 - Ivan, 2 - Juan, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 1 - Pedro]
+Candidatos: 23 -> 11
+Quedan: [13 - Ana, 14 - Beatriz, 15 - Carla, 16 - Diana, 17 - Elena, 18 - Florencia, 19 - Gabriela, 20 - Helena, 21 - Ines, 22 - Julia, 23 - Laura]
+Candidatos restantes: Máquina 1 = 11 | Máquina 2 = 23
+
+--- TURNO 2: Máquina 2 ---
+Candidatos antes: 23
+Lista actual: [13 - Ana, 14 - Beatriz, 15 - Carla, 3 - Carlos, 16 - Diana, 4 - Diego, 17 - Elena, 5 - Esteban, 6 - Federico, 18 - Florencia, 7 - Gabriel, 19 - Gabriela, 20 - Helena, 8 - Hugo, 21 - Ines, 9 - Ivan, 2 - Juan, 22 - Julia, 23 - Laura, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 1 - Pedro]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Es hombre?                    Sí: 12 | No: 11 | Mayor grupo: 12 | Útil
+  ¿Tiene calvicie parcial?       Sí: 11 | No: 12 | Mayor grupo: 12 | Útil
+  ¿Usa lentes?                   Sí: 11 | No: 12 | Mayor grupo: 12 | Útil
+  ¿Tiene pelo negro?             Sí:  8 | No: 15 | Mayor grupo: 15 | Útil
+  ¿Tiene pelo colorado?          Sí:  8 | No: 15 | Mayor grupo: 15 | Útil
+  ¿Tiene pelo rubio?             Sí:  7 | No: 16 | Mayor grupo: 16 | Útil
+Greedy elige: ¿Es hombre?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Es hombre?
+Respuesta del rival: No
+Descartados (12): [3 - Carlos, 4 - Diego, 5 - Esteban, 6 - Federico, 7 - Gabriel, 8 - Hugo, 9 - Ivan, 2 - Juan, 10 - Lucas, 11 - Marcos, 12 - Nicolas, 1 - Pedro]
+Candidatos: 23 -> 11
+Quedan: [13 - Ana, 14 - Beatriz, 15 - Carla, 16 - Diana, 17 - Elena, 18 - Florencia, 19 - Gabriela, 20 - Helena, 21 - Ines, 22 - Julia, 23 - Laura]
+Candidatos restantes: Máquina 1 = 11 | Máquina 2 = 11
+
+--- TURNO 3: Máquina 1 ---
+Candidatos antes: 11
+Lista actual: [13 - Ana, 14 - Beatriz, 15 - Carla, 16 - Diana, 17 - Elena, 18 - Florencia, 19 - Gabriela, 20 - Helena, 21 - Ines, 22 - Julia, 23 - Laura]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Tiene calvicie parcial?       Sí:  5 | No:  6 | Mayor grupo:  6 | Útil
+  ¿Usa lentes?                   Sí:  5 | No:  6 | Mayor grupo:  6 | Útil
+  ¿Tiene pelo negro?             Sí:  4 | No:  7 | Mayor grupo:  7 | Útil
+  ¿Tiene pelo colorado?          Sí:  4 | No:  7 | Mayor grupo:  7 | Útil
+  ¿Tiene pelo rubio?             Sí:  3 | No:  8 | Mayor grupo:  8 | Útil
+Greedy elige: ¿Tiene calvicie parcial?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Tiene calvicie parcial?
+Respuesta del rival: Sí
+Descartados (6): [13 - Ana, 14 - Beatriz, 17 - Elena, 18 - Florencia, 21 - Ines, 22 - Julia]
+Candidatos: 11 -> 5
+Quedan: [15 - Carla, 16 - Diana, 19 - Gabriela, 20 - Helena, 23 - Laura]
+Candidatos restantes: Máquina 1 = 5 | Máquina 2 = 11
+
+--- TURNO 4: Máquina 2 ---
+Candidatos antes: 11
+Lista actual: [13 - Ana, 14 - Beatriz, 15 - Carla, 16 - Diana, 17 - Elena, 18 - Florencia, 19 - Gabriela, 20 - Helena, 21 - Ines, 22 - Julia, 23 - Laura]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Tiene calvicie parcial?       Sí:  5 | No:  6 | Mayor grupo:  6 | Útil
+  ¿Usa lentes?                   Sí:  5 | No:  6 | Mayor grupo:  6 | Útil
+  ¿Tiene pelo negro?             Sí:  4 | No:  7 | Mayor grupo:  7 | Útil
+  ¿Tiene pelo colorado?          Sí:  4 | No:  7 | Mayor grupo:  7 | Útil
+  ¿Tiene pelo rubio?             Sí:  3 | No:  8 | Mayor grupo:  8 | Útil
+Greedy elige: ¿Tiene calvicie parcial?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Tiene calvicie parcial?
+Respuesta del rival: No
+Descartados (5): [15 - Carla, 16 - Diana, 19 - Gabriela, 20 - Helena, 23 - Laura]
+Candidatos: 11 -> 6
+Quedan: [13 - Ana, 14 - Beatriz, 17 - Elena, 18 - Florencia, 21 - Ines, 22 - Julia]
+Candidatos restantes: Máquina 1 = 5 | Máquina 2 = 6
+
+--- TURNO 5: Máquina 1 ---
+Candidatos antes: 5
+Lista actual: [15 - Carla, 16 - Diana, 19 - Gabriela, 20 - Helena, 23 - Laura]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Usa lentes?                   Sí:  2 | No:  3 | Mayor grupo:  3 | Útil
+  ¿Tiene pelo negro?             Sí:  2 | No:  3 | Mayor grupo:  3 | Útil
+  ¿Tiene pelo colorado?          Sí:  2 | No:  3 | Mayor grupo:  3 | Útil
+  ¿Tiene pelo rubio?             Sí:  1 | No:  4 | Mayor grupo:  4 | Útil
+Greedy elige: ¿Usa lentes?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Usa lentes?
+Respuesta del rival: Sí
+Descartados (3): [15 - Carla, 19 - Gabriela, 23 - Laura]
+Candidatos: 5 -> 2
+Quedan: [16 - Diana, 20 - Helena]
+Candidatos restantes: Máquina 1 = 2 | Máquina 2 = 6
+
+--- TURNO 6: Máquina 2 ---
+Candidatos antes: 6
+Lista actual: [13 - Ana, 14 - Beatriz, 17 - Elena, 18 - Florencia, 21 - Ines, 22 - Julia]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Usa lentes?                   Sí:  3 | No:  3 | Mayor grupo:  3 | Útil
+  ¿Tiene pelo negro?             Sí:  2 | No:  4 | Mayor grupo:  4 | Útil
+  ¿Tiene pelo colorado?          Sí:  2 | No:  4 | Mayor grupo:  4 | Útil
+  ¿Tiene pelo rubio?             Sí:  2 | No:  4 | Mayor grupo:  4 | Útil
+Greedy elige: ¿Usa lentes?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Usa lentes?
+Respuesta del rival: No
+Descartados (3): [14 - Beatriz, 18 - Florencia, 22 - Julia]
+Candidatos: 6 -> 3
+Quedan: [13 - Ana, 17 - Elena, 21 - Ines]
+Candidatos restantes: Máquina 1 = 2 | Máquina 2 = 3
+
+--- TURNO 7: Máquina 1 ---
+Candidatos antes: 2
+Lista actual: [16 - Diana, 20 - Helena]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Tiene pelo negro?             Sí:  1 | No:  1 | Mayor grupo:  1 | Útil
+  ¿Tiene pelo colorado?          Sí:  1 | No:  1 | Mayor grupo:  1 | Útil
+  ¿Tiene pelo rubio?             Sí:  0 | No:  2 | Mayor grupo:  2 | No descarta candidatos
+Greedy elige: ¿Tiene pelo negro?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Tiene pelo negro?
+Respuesta del rival: Sí
+Descartados (1): [20 - Helena]
+Candidatos: 2 -> 1
+Quedan: [16 - Diana]
+Candidatos restantes: Máquina 1 = 1 | Máquina 2 = 3
+
+--- TURNO 8: Máquina 2 ---
+Candidatos antes: 3
+Lista actual: [13 - Ana, 17 - Elena, 21 - Ines]
+Evaluación Greedy de las preguntas no usadas:
+  ¿Tiene pelo negro?             Sí:  1 | No:  2 | Mayor grupo:  2 | Útil
+  ¿Tiene pelo colorado?          Sí:  1 | No:  2 | Mayor grupo:  2 | Útil
+  ¿Tiene pelo rubio?             Sí:  1 | No:  2 | Mayor grupo:  2 | Útil
+Greedy elige: ¿Tiene pelo negro?
+Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.
+Pregunta: ¿Tiene pelo negro?
+Respuesta del rival: No
+Descartados (1): [13 - Ana]
+Candidatos: 3 -> 2
+Quedan: [17 - Elena, 21 - Ines]
+Candidatos restantes: Máquina 1 = 1 | Máquina 2 = 2
+
+--- TURNO 9: Máquina 1 ---
+Candidatos antes: 1
+Lista actual: [16 - Diana]
+Queda un único candidato: la máquina decide arriesgar.
+Máquina 1 arriesga: 16 - Diana
+¡Acierto!
+Candidatos restantes: Máquina 1 = 1 | Máquina 2 = 2
+
+GANADOR: Máquina 1
+Secreto de Máquina 1: 17 - Elena
+Secreto de Máquina 2: 16 - Diana
+Turnos totales: 9
+
+1. Humano vs. Máquina
+2. Máquina vs. Máquina
+3. Ver personajes
+0. Salir
+Opción: Programa finalizado.
