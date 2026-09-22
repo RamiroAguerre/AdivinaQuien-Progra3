@@ -1,7 +1,9 @@
-package adivinaquien;
+package algoritmos;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import modelo.Personaje;
 
 /** MergeSort: divide, ordena las mitades y las combina. */
 public class OrdenadorPersonajes {

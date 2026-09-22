@@ -1,11 +1,15 @@
-package adivinaquien;
+package datos;
+
+import static modelo.Personaje.ColorPelo.*;
+import static modelo.Personaje.Genero.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import static adivinaquien.Personaje.Genero.*;
-import static adivinaquien.Personaje.ColorPelo.*;
+
+import juego.Pregunta;
+import modelo.Personaje;
 
 /** Carga inicial agrupada por género, con ID autoincremental y datos únicos. */
 public class CatalogoPersonajes {

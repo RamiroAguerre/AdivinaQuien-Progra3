@@ -1,10 +1,12 @@
-package adivinaquien;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
+
+import juego.Pregunta;
 
 /** Estado de una búsqueda. No almacena el personaje secreto del adversario. */
 public class Jugador {

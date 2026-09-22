@@ -1,4 +1,4 @@
-package adivinaquien;
+package test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,6 +9,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
+import algoritmos.EstrategiaGreedy;
+import algoritmos.OrdenadorPersonajes;
+import datos.CatalogoPersonajes;
+import juego.Consola;
+import juego.Juego;
+import juego.Pregunta;
+import modelo.Jugador;
+import modelo.Personaje;
 
 /** Pruebas sin dependencias externas. Se ejecutan aparte del juego. */
 public class Pruebas {

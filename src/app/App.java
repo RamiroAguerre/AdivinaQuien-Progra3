@@ -1,8 +1,14 @@
-package adivinaquien;
+package app;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
+
+import algoritmos.OrdenadorPersonajes;
+import datos.CatalogoPersonajes;
+import juego.Consola;
+import juego.Juego;
+import modelo.Personaje;
 
 /** Punto de entrada del proyecto. */
 public class App {

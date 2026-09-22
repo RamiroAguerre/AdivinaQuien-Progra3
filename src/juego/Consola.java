@@ -1,8 +1,12 @@
-package adivinaquien;
+package juego;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import algoritmos.EstrategiaGreedy;
+import modelo.Jugador;
+import modelo.Personaje;
 
 /** Entrada y presentación. No decide la estrategia de las máquinas. */
 public class Consola {

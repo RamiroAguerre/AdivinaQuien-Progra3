@@ -1,8 +1,11 @@
-package adivinaquien;
+package algoritmos;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import juego.Pregunta;
+import modelo.Personaje;
 
 /** Decide usando solamente los candidatos y las preguntas ya realizadas. */
 public class EstrategiaGreedy {

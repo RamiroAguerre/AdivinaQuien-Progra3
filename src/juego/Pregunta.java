@@ -1,4 +1,6 @@
-package adivinaquien;
+package juego;
+
+import modelo.Personaje;
 
 /** El orden declarado también resuelve los empates de la estrategia Greedy. */
 public enum Pregunta {

@@ -1,4 +1,4 @@
-package adivinaquien;
+package modelo;
 
 /** Datos de un personaje. Sus características no cambian durante la partida. */
 public class Personaje {
@@ -12,6 +12,8 @@ public class Personaje {
     private final boolean lentes;
     private final ColorPelo colorPelo;
 
+//*Constructor de la clase Personaje. Inicializa al objeto con una validacion con excepcion a datos invalidos.**//
+//**Luego inicializa los atributos de cada instancia**//
     public Personaje(int id, String nombre, Genero genero, boolean calvicie,
                      boolean lentes, ColorPelo colorPelo) {
         if (id <= 0 || nombre == null || nombre.trim().isEmpty()
@@ -26,12 +28,24 @@ public class Personaje {
         this.colorPelo = colorPelo;
     }
 
-    public int getId() { return id; }
-    public String getNombre() { return nombre; }
-    public Genero getGenero() { return genero; }
-    public boolean tieneCalvicie() { return calvicie; }
-    public boolean tieneLentes() { return lentes; }
-    public ColorPelo getColorPelo() { return colorPelo; }
+    public int getId() {
+    	return id;
+    }
+    public String getNombre() {
+    	return nombre; 
+    }
+    public Genero getGenero() {
+    	return genero;
+    }
+    public boolean tieneCalvicie() {
+    	return calvicie;
+    }
+    public boolean tieneLentes() {
+    	return lentes;
+    }
+    public ColorPelo getColorPelo() {
+    	return colorPelo;
+    }
 
     @Override
     public String toString() {

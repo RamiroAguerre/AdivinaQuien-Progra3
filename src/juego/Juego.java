@@ -1,8 +1,12 @@
-package adivinaquien;
+package juego;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import algoritmos.EstrategiaGreedy;
+import modelo.Jugador;
+import modelo.Personaje;
 
 /** Árbitro: guarda los secretos y responde; la estrategia nunca los recibe. */
 public class Juego {
