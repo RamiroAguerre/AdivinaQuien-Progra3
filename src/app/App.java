@@ -13,19 +13,8 @@ import modelo.Personaje;
 /** Punto de entrada del proyecto. */
 public class App {
     public static void main(String[] args) {
-        Random azar;
-        try {
-            if (args.length == 0) {
-                azar = new Random();
-            } else if (args.length == 2 && args[0].equals("--semilla")) {
-                azar = new Random(Long.parseLong(args[1]));
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Uso: java -jar adivina-quien.jar [--semilla NUMERO]");
-            return;
-        }
+
+    	Random azar = new Random();
 
         Consola consola = new Consola();
         List<Personaje> originales = CatalogoPersonajes.cargar();

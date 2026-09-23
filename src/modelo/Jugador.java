@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,12 +13,13 @@ public class Jugador {
     private final String nombre;
     private final boolean maquina;
     private List<Personaje> candidatos;
-    private final Set<Pregunta> preguntasUsadas = EnumSet.noneOf(Pregunta.class);
-
+    private Set<Pregunta> preguntasUsadas;
+    
     public Jugador(String nombre, boolean maquina, List<Personaje> catalogo) {
         this.nombre = nombre;
         this.maquina = maquina;
         this.candidatos = new ArrayList<>(catalogo);
+        this.preguntasUsadas = new HashSet<>();
     }
 
     public String getNombre() { return nombre; }

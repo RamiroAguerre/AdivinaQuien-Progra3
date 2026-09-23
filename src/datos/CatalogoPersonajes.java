@@ -4,11 +4,8 @@ import static modelo.Personaje.ColorPelo.*;
 import static modelo.Personaje.Genero.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import juego.Pregunta;
 import modelo.Personaje;
 
 /** Carga inicial agrupada por género, con ID autoincremental y datos únicos. */
@@ -50,22 +47,30 @@ public class CatalogoPersonajes {
         lista.add(new Personaje(lista.size() + 1, nombre, genero, calvicie, lentes, color));
     }
 
+//*Complejidad O(n**2) pero se ejecuta unicamente cuando se carga el catálogo de personajes.*//
     public static void validar(List<Personaje> personajes) {
-        Set<Integer> ids = new HashSet<>();
-        Set<String> combinaciones = new HashSet<>();
-        for (Personaje personaje : personajes) {
-            if (!ids.add(personaje.getId())) {
-                throw new IllegalArgumentException("ID repetido: " + personaje.getId());
-            }
-            // Se valida lo que las preguntas realmente pueden distinguir.
-            StringBuilder firma = new StringBuilder();
-            for (Pregunta pregunta : Pregunta.values()) {
-                firma.append(pregunta.evaluar(personaje) ? '1' : '0');
-            }
-            if (!combinaciones.add(firma.toString())) {
-                throw new IllegalArgumentException(
-                        "Características indistinguibles para: " + personaje.getNombre());
+
+        for (int i = 0; i < personajes.size(); i++) {
+            for (int j = i + 1; j < personajes.size(); j++) {
+
+                Personaje primero = personajes.get(i);
+                Personaje segundo = personajes.get(j);
+
+                if (primero.getId() == segundo.getId()) {
+                    throw new IllegalArgumentException("ID repetido.");
+                }
+
+                if (mismasCaracteristicas(primero, segundo)) {
+                    throw new IllegalArgumentException(
+                            "Hay personajes con las mismas características.");
+                }
             }
         }
+    }
+    
+    private static boolean mismasCaracteristicas(Personaje primero, Personaje segundo) {
+
+        return primero.getGenero() == segundo.getGenero() && primero.tieneCalvicie() == segundo.tieneCalvicie()
+                && primero.tieneLentes() == segundo.tieneLentes() && primero.getColorPelo() == segundo.getColorPelo();
     }
 }
