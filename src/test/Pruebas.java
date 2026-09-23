@@ -104,11 +104,11 @@ public class Pruebas {
             Jugador jugador = new Jugador("Prueba", true, catalogo);
             int preguntas = 0;
             while (jugador.cantidadCandidatos() > 1) {
-                Pregunta elegida = greedy.elegirMejor(greedy.evaluar(
-                        jugador.getCandidatos(), jugador.getPreguntasUsadas()));
+            	Pregunta elegida = greedy.elegirMejor(jugador.getCandidatos(),jugador.getPreguntasUsadas());
                 comprobar(elegida != null, "Todo conjunto con más de uno debe poder separarse.");
                 int siElegida = contarSi(jugador.getCandidatos(), elegida);
                 int costo = Math.max(siElegida, jugador.cantidadCandidatos() - siElegida);
+                
                 for (Pregunta alternativa : Pregunta.values()) {
                     if (!jugador.getPreguntasUsadas().contains(alternativa)) {
                         int si = contarSi(jugador.getCandidatos(), alternativa);

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import algoritmos.EstrategiaGreedy;
 import modelo.Jugador;
 import modelo.Personaje;
 
@@ -57,18 +56,27 @@ public class Consola {
         }
     }
 
-    public void mostrarEvaluaciones(List<EstrategiaGreedy.Evaluacion> evaluaciones) {
-        mostrar("Evaluación Greedy de las preguntas no usadas:");
-        for (EstrategiaGreedy.Evaluacion e : evaluaciones) {
-            System.out.printf("  %-30s Sí: %2d | No: %2d | Mayor grupo: %2d | %s%n",
-                    e.getPregunta().getTexto(), e.getCantidadSi(), e.getCantidadNo(),
-                    e.getPeorGrupo(), e.esUtil() ? "Útil" : "No descarta candidatos");
+    public void mostrarEvaluacion(
+            Pregunta pregunta,
+            int cantidadSi,
+            int cantidadNo) {
+
+        int grupoMayor = Math.max(cantidadSi, cantidadNo);
+
+        String estado;
+
+        if (cantidadSi > 0 && cantidadNo > 0) {
+            estado = "Útil";
+        } else {
+            estado = "No descarta candidatos";
         }
+
+        System.out.printf("  %-30s Sí: %2d | No: %2d | Mayor grupo: %2d | %s%n", pregunta.getTexto(), cantidadSi, cantidadNo,
+        		grupoMayor, estado);
     }
 
     public void mostrarEstado(Jugador primero, Jugador segundo) {
-        mostrar("Candidatos restantes: " + primero.getNombre() + " = "
-                + primero.cantidadCandidatos() + " | " + segundo.getNombre()
+        mostrar("Candidatos restantes: " + primero.getNombre() + " = " + primero.cantidadCandidatos() + " | " + segundo.getNombre()
                 + " = " + segundo.cantidadCandidatos());
     }
 }

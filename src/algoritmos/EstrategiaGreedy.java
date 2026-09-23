@@ -1,61 +1,57 @@
 package algoritmos;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import juego.Pregunta;
 import modelo.Personaje;
 
-/** Decide usando solamente los candidatos y las preguntas ya realizadas. */
+/** Decide usando solamente los candidatos y las preguntas ya realizadas. **/
 public class EstrategiaGreedy {
-    /** Resultado auxiliar del conteo para una pregunta. */
-    public static class Evaluacion {
-        private final Pregunta pregunta;
-        private final int cantidadSi;
-        private final int cantidadNo;
 
-        public Evaluacion(Pregunta pregunta, int cantidadSi, int cantidadNo) {
-            this.pregunta = pregunta;
-            this.cantidadSi = cantidadSi;
-            this.cantidadNo = cantidadNo;
+    /** Cuenta cuántos candidatos responderían "Sí" a una pregunta.**/
+    public int contarSi(List<Personaje> candidatos, Pregunta pregunta) {
+
+        int cantidad = 0;
+
+        for (Personaje personaje : candidatos) {
+
+            if (pregunta.evaluar(personaje)) {
+                cantidad++;
+            }
         }
 
-        public Pregunta getPregunta() { return pregunta; }
-        public int getCantidadSi() { return cantidadSi; }
-        public int getCantidadNo() { return cantidadNo; }
-        public int getPeorGrupo() { return Math.max(cantidadSi, cantidadNo); }
-        public boolean esUtil() { return cantidadSi > 0 && cantidadNo > 0; }
+        return cantidad;
     }
 
-    // O(f * n): se recorren n candidatos para cada uno de los f filtros.
-    public List<Evaluacion> evaluar(List<Personaje> candidatos, Set<Pregunta> usadas) {
-        List<Evaluacion> evaluaciones = new ArrayList<>();
+    /** O(f * n): se recorren n candidatos para cada uno de los f filtros.**/
+    /**Como hay 6 filtros fijos, equivale a O(n).**/
+    public Pregunta elegirMejor(List<Personaje> candidatos,
+            Set<Pregunta> preguntasUsadas) {
+
+        Pregunta mejorPregunta = null;
+        int menorGrupoMayor = Integer.MAX_VALUE;
+
         for (Pregunta pregunta : Pregunta.values()) {
-            if (!usadas.contains(pregunta)) {
-                int cantidadSi = 0;
-                for (Personaje personaje : candidatos) {
-                    if (pregunta.evaluar(personaje)) {
-                        cantidadSi++;
+
+            if (!preguntasUsadas.contains(pregunta)) {
+
+                int cantidadSi = contarSi(candidatos, pregunta);
+                int cantidadNo = candidatos.size() - cantidadSi;
+
+                // Solo sirve si puede dividir a los candidatos.
+                if (cantidadSi > 0 && cantidadNo > 0) {
+
+                    int grupoMayor = Math.max(cantidadSi, cantidadNo);
+
+                    if (grupoMayor < menorGrupoMayor) {
+                        menorGrupoMayor = grupoMayor;
+                        mejorPregunta = pregunta;
                     }
                 }
-                evaluaciones.add(new Evaluacion(pregunta, cantidadSi,
-                        candidatos.size() - cantidadSi));
             }
         }
-        return evaluaciones;
-    }
 
-    public Pregunta elegirMejor(List<Evaluacion> evaluaciones) {
-        Evaluacion mejor = null;
-        for (Evaluacion evaluacion : evaluaciones) {
-            // Elegimos el menor de los grupos máximos: MIN(MAX(sí, no)).
-            if (evaluacion.esUtil()
-                    && (mejor == null || evaluacion.getPeorGrupo() < mejor.getPeorGrupo())) {
-                mejor = evaluacion;
-            }
-        }
-        // En empate se conserva la primera pregunta del enum.
-        return mejor == null ? null : mejor.getPregunta();
+        return mejorPregunta;
     }
 }

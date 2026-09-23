@@ -94,25 +94,58 @@ public class Juego {
     }
 
     private boolean turnoMaquina(Jugador jugador, Personaje objetivo) {
+
         if (jugador.cantidadCandidatos() == 1) {
             consola.mostrar("Queda un único candidato: la máquina decide arriesgar.");
-            return arriesgar(jugador, objetivo, jugador.getCandidatos().get(0));
+
+            return arriesgar(
+                    jugador,
+                    objetivo,
+                    jugador.getCandidatos().get(0));
         }
-        List<EstrategiaGreedy.Evaluacion> evaluaciones = estrategia.evaluar(
-                jugador.getCandidatos(), jugador.getPreguntasUsadas());
-        consola.mostrarEvaluaciones(evaluaciones);
-        Pregunta pregunta = estrategia.elegirMejor(evaluaciones);
+
+        mostrarEvaluacionGreedy(jugador);
+
+        Pregunta pregunta = estrategia.elegirMejor(
+                jugador.getCandidatos(),
+                jugador.getPreguntasUsadas());
+
         if (pregunta == null) {
-            // Defensa ante cambios futuros del catálogo: evitar un bucle infinito.
             consola.mostrar("No quedan preguntas útiles. Se arriesga el primer candidato.");
-            return arriesgar(jugador, objetivo, jugador.getCandidatos().get(0));
+
+            return arriesgar(
+                    jugador,
+                    objetivo,
+                    jugador.getCandidatos().get(0));
         }
+
         consola.mostrar("Greedy elige: " + pregunta.getTexto());
-        consola.mostrar("Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.");
+        consola.mostrar(
+                "Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.");
+
         preguntar(jugador, objetivo, pregunta);
+
         return false;
     }
 
+    private void mostrarEvaluacionGreedy(Jugador jugador) {
+
+        consola.mostrar("Evaluación Greedy de las preguntas no usadas:");
+
+        for (Pregunta pregunta : Pregunta.values()) {
+
+            if (!jugador.getPreguntasUsadas().contains(pregunta)) {
+
+                int cantidadSi = estrategia.contarSi(jugador.getCandidatos(), pregunta);
+
+                int cantidadNo =
+                        jugador.cantidadCandidatos() - cantidadSi;
+
+                consola.mostrarEvaluacion(pregunta, cantidadSi, cantidadNo);
+            }
+        }
+    }
+    
     private Pregunta elegirPreguntaHumana(Jugador jugador) {
         List<Pregunta> disponibles = new ArrayList<>();
         for (Pregunta pregunta : Pregunta.values()) {
