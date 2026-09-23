@@ -17,7 +17,9 @@ public enum Pregunta {
         this.texto = texto;
     }
 
-    public String getTexto() { return texto; }
+    public String getTexto() {
+    	return texto;
+    }
 
     // Una única definición sirve para responder, contar y descartar.
     public boolean evaluar(Personaje personaje) {

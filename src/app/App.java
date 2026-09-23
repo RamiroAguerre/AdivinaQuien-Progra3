@@ -18,9 +18,9 @@ public class App {
 
         Consola consola = new Consola();
         List<Personaje> originales = CatalogoPersonajes.cargar();
-        consola.mostrar("ADIVINA QUIÉN - Versión preliminar en consola");
+        consola.mostrar("ADIVINA QUIÉN");
         consola.mostrar("Catálogo validado: 23 personajes con características únicas.");
-        consola.mostrar("Calvicie = parcial; se conserva el color del pelo de los costados.");
+        consola.mostrar("Calvicie = parcial, se conserva el color del pelo de los costados.");
         consola.mostrar("Carga original agrupada por género: " + originales);
         consola.mostrar("Ordenamiento inicial: MergeSort por nombre, con ID como desempate.");
         List<Personaje> catalogo = OrdenadorPersonajes.ordenar(originales);
@@ -30,8 +30,10 @@ public class App {
 
         try {
             while (true) {
-                consola.mostrar("\n1. Humano vs. Máquina\n2. Máquina vs. Máquina"
-                        + "\n3. Ver personajes\n0. Salir");
+                consola.mostrar("\n1. Humano vs. Máquina"
+                		+ "\n2. Máquina vs. Máquina"
+                        + "\n3. Ver personajes"
+                        + "\n0. Salir");
                 int opcion = consola.leerEntero("Opción: ", 0, 3);
                 switch (opcion) {
                     case 1: juego.jugar(false); break;

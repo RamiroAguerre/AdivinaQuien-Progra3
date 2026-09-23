@@ -41,9 +41,7 @@ public class CatalogoPersonajes {
         return personajes;
     }
 
-    private static void agregar(List<Personaje> lista, String nombre,
-            Personaje.Genero genero, boolean calvicie, boolean lentes,
-            Personaje.ColorPelo color) {
+    private static void agregar(List<Personaje> lista, String nombre, Personaje.Genero genero, boolean calvicie, boolean lentes, Personaje.ColorPelo color) {
         lista.add(new Personaje(lista.size() + 1, nombre, genero, calvicie, lentes, color));
     }
 
