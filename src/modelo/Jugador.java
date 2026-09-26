@@ -2,10 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import juego.Pregunta;
 
 /** Estado de una búsqueda. No almacena el personaje secreto del adversario. */
@@ -13,23 +10,33 @@ public class Jugador {
     private final String nombre;
     private final boolean maquina;
     private List<Personaje> candidatos;
-    private Set<Pregunta> preguntasUsadas;
+    private List<Pregunta> preguntasUsadas;
     
     public Jugador(String nombre, boolean maquina, List<Personaje> catalogo) {
         this.nombre = nombre;
         this.maquina = maquina;
         this.candidatos = new ArrayList<>(catalogo);
-        this.preguntasUsadas = new HashSet<>();
+        this.preguntasUsadas = new ArrayList<>();
     }
 
-    public String getNombre() { return nombre; }
-    public boolean esMaquina() { return maquina; }
-    public int cantidadCandidatos() { return candidatos.size(); }
+    public String getNombre() {
+    	return nombre;
+    }
+    
+    public boolean esMaquina() {
+    	return maquina;
+    }
+    
+    public int cantidadCandidatos() {
+    	return candidatos.size(); 
+    }
+    
     public List<Personaje> getCandidatos() {
         return Collections.unmodifiableList(candidatos);
     }
-    public Set<Pregunta> getPreguntasUsadas() {
-        return Collections.unmodifiableSet(preguntasUsadas);
+    
+    public List<Pregunta> getPreguntasUsadas() {
+        return Collections.unmodifiableList(preguntasUsadas);
     }
 
     // Filtrado lineal O(n). Retorna los descartados para mostrarlos en consola.

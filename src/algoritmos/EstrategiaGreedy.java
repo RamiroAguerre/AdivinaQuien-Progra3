@@ -1,8 +1,6 @@
 package algoritmos;
 
 import java.util.List;
-import java.util.Set;
-
 import juego.Pregunta;
 import modelo.Personaje;
 
@@ -26,8 +24,7 @@ public class EstrategiaGreedy {
 
     /** O(f * n): se recorren n candidatos para cada uno de los f filtros.**/
     /**Como hay 6 filtros fijos, equivale a O(n).**/
-    public Pregunta elegirMejor(List<Personaje> candidatos,
-            Set<Pregunta> preguntasUsadas) {
+    public Pregunta elegirMejor(List<Personaje> candidatos, List<Pregunta> preguntasUsadas) {
 
         Pregunta mejorPregunta = null;
         int menorGrupoMayor = Integer.MAX_VALUE;
