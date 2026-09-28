@@ -12,21 +12,28 @@ public class Personaje {
     private final boolean lentes;
     private final ColorPelo colorPelo;
 
-//*Constructor de la clase Personaje. Inicializa al objeto con una validacion con excepcion a datos invalidos.**//
-//**Luego inicializa los atributos de cada instancia**//
-    public Personaje(int id, String nombre, Genero genero, boolean calvicie,
-                     boolean lentes, ColorPelo colorPelo) {
-        if (id <= 0 || nombre == null || nombre.trim().isEmpty()
-                || genero == null || colorPelo == null) {
-            throw new IllegalArgumentException("Datos de personaje inválidos.");
-        }
-        this.id = id;
-        this.nombre = nombre;
-        this.genero = genero;
-        this.calvicie = calvicie;
-        this.lentes = lentes;
-        this.colorPelo = colorPelo;
-    }
+ //** Constructor del personaje con validación de datos.**//
+    public Personaje(int id, String nombre, Genero genero, boolean calvicie, boolean lentes, ColorPelo colorPelo) {
+
+		if (id <= 0) {
+		   throw new IllegalArgumentException("ID inválido.");
+		}
+		
+		if (nombre == null || nombre.trim().isEmpty()) {
+		   throw new IllegalArgumentException("Nombre inválido.");
+		}
+		
+		if (genero == null || colorPelo == null) {
+		   throw new IllegalArgumentException("Datos inválidos.");
+		}
+		
+		this.id = id;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.calvicie = calvicie;
+		this.lentes = lentes;
+		this.colorPelo = colorPelo;
+		}
 
     public int getId() {
     	return id;

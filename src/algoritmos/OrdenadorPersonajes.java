@@ -17,25 +17,26 @@ public class OrdenadorPersonajes {
         return combinar(izquierda, derecha);
     }
 
-    private static List<Personaje> combinar(List<Personaje> izquierda,
-                                            List<Personaje> derecha) {
+    private static List<Personaje> combinar(List<Personaje> izquierda, List<Personaje> derecha) {
         List<Personaje> resultado = new ArrayList<>();
-        int i = 0;
-        int j = 0;
-        while (i < izquierda.size() && j < derecha.size()) {
-            if (comparar(izquierda.get(i), derecha.get(j)) <= 0) {
-                resultado.add(izquierda.get(i));
-                i++;
+        int indiceIzquierda = 0;
+        int indiceDerecha = 0;
+        while (indiceIzquierda < izquierda.size() && indiceDerecha < derecha.size()) {
+            if (comparar(izquierda.get(indiceIzquierda), derecha.get(indiceDerecha)) <= 0) {
+                resultado.add(izquierda.get(indiceIzquierda));
+                indiceIzquierda++;
             } else {
-                resultado.add(derecha.get(j));
-                j++;
+                resultado.add(derecha.get(indiceDerecha));
+                indiceDerecha++;
             }
         }
-        while (i < izquierda.size()) {
-            resultado.add(izquierda.get(i++));
+        while (indiceIzquierda < izquierda.size()) {
+            resultado.add(izquierda.get(indiceIzquierda));
+            indiceIzquierda++;
         }
-        while (j < derecha.size()) {
-            resultado.add(derecha.get(j++));
+        while (indiceDerecha < derecha.size()) {
+            resultado.add(derecha.get(indiceDerecha));
+            indiceDerecha++;
         }
         return resultado;
     }

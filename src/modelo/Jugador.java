@@ -1,7 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import juego.Pregunta;
 
@@ -32,11 +31,11 @@ public class Jugador {
     }
     
     public List<Personaje> getCandidatos() {
-        return Collections.unmodifiableList(candidatos);
+        return candidatos;
     }
     
     public List<Pregunta> getPreguntasUsadas() {
-        return Collections.unmodifiableList(preguntasUsadas);
+        return preguntasUsadas;
     }
 
     // Filtrado lineal O(n). Retorna los descartados para mostrarlos en consola.

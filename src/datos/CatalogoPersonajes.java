@@ -1,8 +1,5 @@
 package datos;
 
-import static modelo.Personaje.ColorPelo.*;
-import static modelo.Personaje.Genero.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,29 +11,29 @@ public class CatalogoPersonajes {
         List<Personaje> personajes = new ArrayList<>();
         // Parámetros: nombre, género, calvicie parcial, lentes, color de pelo.
         // Calvicie parcial permite conservar pelo de color en los costados.
-        agregar(personajes, "Pedro", HOMBRE, false, true, NEGRO);
-        agregar(personajes, "Juan", HOMBRE, false, false, NEGRO);
-        agregar(personajes, "Carlos", HOMBRE, true, false, NEGRO);
-        agregar(personajes, "Diego", HOMBRE, true, true, NEGRO);
-        agregar(personajes, "Esteban", HOMBRE, false, false, COLORADO);
-        agregar(personajes, "Federico", HOMBRE, false, true, COLORADO);
-        agregar(personajes, "Gabriel", HOMBRE, true, false, COLORADO);
-        agregar(personajes, "Hugo", HOMBRE, true, true, COLORADO);
-        agregar(personajes, "Ivan", HOMBRE, false, false, RUBIO);
-        agregar(personajes, "Lucas", HOMBRE, false, true, RUBIO);
-        agregar(personajes, "Marcos", HOMBRE, true, false, RUBIO);
-        agregar(personajes, "Nicolas", HOMBRE, true, true, RUBIO);
-        agregar(personajes, "Ana", MUJER, false, false, NEGRO);
-        agregar(personajes, "Beatriz", MUJER, false, true, NEGRO);
-        agregar(personajes, "Carla", MUJER, true, false, NEGRO);
-        agregar(personajes, "Diana", MUJER, true, true, NEGRO);
-        agregar(personajes, "Elena", MUJER, false, false, COLORADO);
-        agregar(personajes, "Florencia", MUJER, false, true, COLORADO);
-        agregar(personajes, "Gabriela", MUJER, true, false, COLORADO);
-        agregar(personajes, "Helena", MUJER, true, true, COLORADO);
-        agregar(personajes, "Ines", MUJER, false, false, RUBIO);
-        agregar(personajes, "Julia", MUJER, false, true, RUBIO);
-        agregar(personajes, "Laura", MUJER, true, false, RUBIO);
+        agregar(personajes, "Pedro", Personaje.Genero.HOMBRE, false, true, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Juan", Personaje.Genero.HOMBRE, false, false, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Carlos", Personaje.Genero.HOMBRE, true, false, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Diego", Personaje.Genero.HOMBRE, true, true, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Esteban", Personaje.Genero.HOMBRE, false, false, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Federico", Personaje.Genero.HOMBRE, false, true, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Gabriel", Personaje.Genero.HOMBRE, true, false, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Hugo", Personaje.Genero.HOMBRE, true, true, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Ivan", Personaje.Genero.HOMBRE, false, false, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Lucas", Personaje.Genero.HOMBRE, false, true, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Marcos", Personaje.Genero.HOMBRE, true, false, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Nicolas", Personaje.Genero.HOMBRE, true, true, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Ana", Personaje.Genero.MUJER, false, false, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Beatriz", Personaje.Genero.MUJER, false, true, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Carla", Personaje.Genero.MUJER, true, false, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Diana", Personaje.Genero.MUJER, true, true, Personaje.ColorPelo.NEGRO);
+        agregar(personajes, "Elena", Personaje.Genero.MUJER, false, false, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Florencia", Personaje.Genero.MUJER, false, true, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Gabriela", Personaje.Genero.MUJER, true, false, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Helena", Personaje.Genero.MUJER, true, true, Personaje.ColorPelo.COLORADO);
+        agregar(personajes, "Ines", Personaje.Genero.MUJER, false, false, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Julia", Personaje.Genero.MUJER, false, true, Personaje.ColorPelo.RUBIO);
+        agregar(personajes, "Laura", Personaje.Genero.MUJER, true, false, Personaje.ColorPelo.RUBIO);
         validar(personajes);
         return personajes;
     }
