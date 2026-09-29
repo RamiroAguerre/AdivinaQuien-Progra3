@@ -65,7 +65,18 @@ public class CatalogoPersonajes {
     
     private static boolean mismasCaracteristicas(Personaje primero, Personaje segundo) {
 
-        return primero.getGenero() == segundo.getGenero() && primero.tieneCalvicie() == segundo.tieneCalvicie()
-                && primero.tieneLentes() == segundo.tieneLentes() && primero.getColorPelo() == segundo.getColorPelo();
+        boolean mismoGenero =
+                primero.getGenero() == segundo.getGenero();
+
+        boolean mismaCalvicie =
+                primero.tieneCalvicie() == segundo.tieneCalvicie();
+
+        boolean mismosLentes =
+                primero.tieneLentes() == segundo.tieneLentes();
+
+        boolean mismoColorPelo =
+                primero.getColorPelo() == segundo.getColorPelo();
+
+        return mismoGenero&& mismaCalvicie&& mismosLentes&& mismoColorPelo;
     }
 }

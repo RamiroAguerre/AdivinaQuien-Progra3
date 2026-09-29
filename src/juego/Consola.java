@@ -1,7 +1,6 @@
 package juego;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import modelo.Jugador;
@@ -18,16 +17,14 @@ public class Consola {
     public int leerEntero(String mensaje, int minimo, int maximo) {
         while (true) {
             System.out.print(mensaje);
-            if (!entrada.hasNextLine()) {
-                throw new NoSuchElementException("Fin de la entrada.");
-            }
             try {
                 int valor = Integer.parseInt(entrada.nextLine().trim());
+
                 if (valor >= minimo && valor <= maximo) {
                     return valor;
                 }
             } catch (NumberFormatException e) {
-                // Volvemos a pedir la entrada sin interrumpir la partida.
+                //** Si no es un número, vuelve a pedirlo**//
             }
             mostrar("Ingresá un número entre " + minimo + " y " + maximo + ".");
         }
