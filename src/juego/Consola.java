@@ -2,13 +2,12 @@ package juego;
 
 import java.util.List;
 import java.util.Scanner;
-
 import modelo.Jugador;
 import modelo.Personaje;
 
 /** Entrada y presentación. No decide la estrategia de las máquinas. */
 public class Consola {
-    private final Scanner entrada = new Scanner(System.in, "UTF-8");
+    private final Scanner entrada = new Scanner(System.in);
 
     public void mostrar(String texto) {
         System.out.println(texto);
@@ -75,5 +74,16 @@ public class Consola {
     public void mostrarEstado(Jugador primero, Jugador segundo) {
         mostrar("Candidatos restantes: " + primero.getNombre() + " = " + primero.cantidadCandidatos() + " | " + segundo.getNombre()
                 + " = " + segundo.cantidadCandidatos());
+    }
+    
+    public void mostrarSeparador() {
+        System.out.println("--------------------------------------------------------------------------------");
+    }
+    
+    public void mostrarTitulo(String titulo) {
+        mostrar("");
+        mostrarSeparador();
+        mostrar(titulo);
+        mostrarSeparador();
     }
 }

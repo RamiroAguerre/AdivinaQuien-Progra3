@@ -30,10 +30,11 @@ public class App {
 
         try {
             while (true) {
-                consola.mostrar("\n1. Humano vs. Máquina"
-                		+ "\n2. Máquina vs. Máquina"
-                        + "\n3. Ver personajes"
-                        + "\n0. Salir");
+            	consola.mostrar("");
+            	consola.mostrar("1. Humano vs. Máquina"
+            	        + "\n2. Máquina vs. Máquina"
+            	        + "\n3. Ver personajes"
+            	        + "\n0. Salir");
                 int opcion = consola.leerEntero("Opción: ", 0, 3);
                 switch (opcion) {
                     case 1: juego.jugar(false); break;

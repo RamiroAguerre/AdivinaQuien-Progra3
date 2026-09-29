@@ -29,11 +29,18 @@ public class Juego {
             secretoPrimero = elegirSecreto();
         } else {
             consola.mostrarPersonajes(catalogo);
+            consola.mostrar("");
             secretoPrimero = consola.elegirPersonaje("Elegí tu personaje secreto por ID: ", catalogo);
-            consola.mostrar("Elegiste: " + secretoPrimero + ". La estrategia no recibe este dato.");
+            consola.mostrar("");
+            consola.mostrarSeparador();
+            consola.mostrar("PERSONAJE ELEGIDO");
+            consola.mostrarSeparador();
+            consola.mostrar("Elegiste: " + secretoPrimero);
+            consola.mostrar("La estrategia no recibe este dato.");
+            consola.mostrar("");
         }
         Personaje secretoSegundo = elegirSecreto();
-        consola.mostrar("\nCada participante comienza con 23 candidatos y busca el secreto del rival.");
+        consola.mostrar("Cada participante comienza con 23 candidatos y busca el secreto del rival.");
         consola.mostrar("Un turno permite preguntar O arriesgar un personaje.");
         consola.mostrar("Una suposición incorrecta consume el turno y descarta ese personaje.");
         consola.mostrar("Los secretos se eligen independientemente y pueden coincidir.");
@@ -48,14 +55,14 @@ public class Juego {
         while (true) {
             Jugador actual = turnoPrimero ? primero : segundo;
             Personaje objetivo = turnoPrimero ? secretoSegundo : secretoPrimero;
-            consola.mostrar("\n--- TURNO " + turno + ": " + actual.getNombre() + " ---");
+            consola.mostrarTitulo("TURNO " + turno + ": " + actual.getNombre());
             consola.mostrar("Candidatos antes: " + actual.cantidadCandidatos());
-            consola.mostrar("Lista actual: " + actual.getCandidatos());
             boolean gano;
             if (actual.esMaquina()) {
                 gano = turnoMaquina(actual, objetivo);
             } else {
                 consola.mostrarPersonajes(actual.getCandidatos());
+                consola.mostrar("");
                 consola.mostrar("1. Preguntar\n2. Arriesgar personaje\n0. Abandonar partida");
                 int accion = consola.leerEntero("Acción: ", 0, 2);
                 if (accion == 0) {
@@ -78,7 +85,7 @@ public class Juego {
             }
             consola.mostrarEstado(primero, segundo);
             if (gano) {
-                consola.mostrar("\nGANADOR: " + actual.getNombre());
+            	consola.mostrarTitulo("GANADOR: " + actual.getNombre());
                 consola.mostrar("Secreto de " + primero.getNombre() + ": " + secretoPrimero);
                 consola.mostrar("Secreto de " + segundo.getNombre() + ": " + secretoSegundo);
                 consola.mostrar("Turnos totales: " + turno);
@@ -119,9 +126,9 @@ public class Juego {
                     jugador.getCandidatos().get(0));
         }
 
+        consola.mostrarTitulo("DECISIÓN GREEDY");
         consola.mostrar("Greedy elige: " + pregunta.getTexto());
-        consola.mostrar(
-                "Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.");
+        consola.mostrar("Criterio: minimizar el mayor grupo. Empates: orden fijo de preguntas.");
 
         preguntar(jugador, objetivo, pregunta);
 
@@ -130,20 +137,26 @@ public class Juego {
 
     private void mostrarEvaluacionGreedy(Jugador jugador) {
 
-        consola.mostrar("Evaluación Greedy de las preguntas no usadas:");
+        consola.mostrar("");
+        consola.mostrarSeparador();
+        consola.mostrar("EVALUACIÓN GREEDY");
+        consola.mostrarSeparador();
 
         for (Pregunta pregunta : Pregunta.values()) {
 
             if (!jugador.getPreguntasUsadas().contains(pregunta)) {
 
-                int cantidadSi = estrategia.contarSi(jugador.getCandidatos(), pregunta);
+                int cantidadSi =
+                        estrategia.contarSi(jugador.getCandidatos(),pregunta);
 
                 int cantidadNo =
                         jugador.cantidadCandidatos() - cantidadSi;
 
-                consola.mostrarEvaluacion(pregunta, cantidadSi, cantidadNo);
+                consola.mostrarEvaluacion(pregunta,cantidadSi,cantidadNo);
             }
         }
+
+        consola.mostrarSeparador();
     }
     
     private Pregunta elegirPreguntaHumana(Jugador jugador) {
@@ -165,12 +178,14 @@ public class Juego {
         int antes = jugador.cantidadCandidatos();
         // El árbitro responde. La estrategia solo recibirá los candidatos compatibles.
         boolean respuesta = pregunta.evaluar(objetivo);
+        consola.mostrar("");
         consola.mostrar("Pregunta: " + pregunta.getTexto());
         consola.mostrar("Respuesta del rival: " + (respuesta ? "Sí" : "No"));
         List<Personaje> descartados = jugador.aplicarRespuesta(pregunta, respuesta);
         consola.mostrar("Descartados (" + descartados.size() + "): " + descartados);
         consola.mostrar("Candidatos: " + antes + " -> " + jugador.cantidadCandidatos());
         consola.mostrar("Quedan: " + jugador.getCandidatos());
+        consola.mostrar("");
     }
 
     private boolean arriesgar(Jugador jugador, Personaje objetivo, Personaje elegido) {
