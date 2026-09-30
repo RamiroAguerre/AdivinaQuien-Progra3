@@ -46,7 +46,7 @@ public class Juego {
         consola.mostrar("Los secretos se eligen independientemente y pueden coincidir.");
         consola.mostrar("Las respuestas las calcula el juego automáticamente.");
         if (automatico) {
-            consola.mostrar("Prototipo: ambas máquinas utilizan Greedy, sin compartir información.");
+            consola.mostrar("Estilo de Juego: ambas máquinas utilizan Greedy, sin compartir información.");
         }
         consola.mostrarEstado(primero, segundo);
 
